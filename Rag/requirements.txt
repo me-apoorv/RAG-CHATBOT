@@ -1,0 +1,15 @@
+# Requirements pinned to versions known to be stable/compatible around mid-2024.
+# Adjust if newer releases are required for your environment.
+
+pdfplumber==0.9.0
+langchain==0.0.300
+sentence-transformers==2.2.2
+faiss-cpu==1.13.2
+llama-cpp-python>=0.2.0
+streamlit==1.25.0
+huggingface_hub==0.14.1
+
+# Supporting libraries
+# Python 3.11 is recommended for compatibility with faiss-cpu and stable wheels.
+numpy>=1.24.3,<2.0
+transformers==4.30.0
