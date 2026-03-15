@@ -105,7 +105,7 @@ def word_count(text):
 
 def chunk_text(doc_name=None):
     """Read cleaned text from data/cleaned.txt, split into chunks using
-    LangChain RecursiveCharacterTextSplitter (chunk_size=250, chunk_overlap=30),
+    LangChain RecursiveCharacterTextSplitter (chunk_size=500, chunk_overlap=150),
     save chunks as list of dicts to <project_root>/chunks/chunks.json, and
     print the total number of chunks created. Each chunk includes document name.
     """
@@ -120,7 +120,12 @@ def chunk_text(doc_name=None):
     with open(cleaned_path, 'r', encoding='utf-8') as f:
         text = f.read()
 
-    splitter = RecursiveCharacterTextSplitter(chunk_size=250, chunk_overlap=30)
+    splitter = RecursiveCharacterTextSplitter(
+        chunk_size=500,
+        chunk_overlap=150,
+        separators=["\n\n", "\n", ". ", "? ", "! ", " ", ""],
+        # Tries paragraph → sentence → word before character split
+    )
     chunks = splitter.split_text(text)
 
     chunk_dicts = []

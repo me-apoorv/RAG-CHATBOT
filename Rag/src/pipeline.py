@@ -18,14 +18,15 @@ class RAGPipeline:
         self.retriever = retriever or Retriever()
         self.generator = generator or Generator()
 
-    def ask(self, query: str):
+    def ask(self, query: str, top_k: int = 5):
         """Return (token_generator, source_chunks).
 
         - token_generator: an iterator yielding token text from the generator
         - source_chunks: list[str] of retrieved chunk texts used as context
+        - top_k: number of chunks to retrieve (default: 5)
         """
         # Retrieve relevant chunks (as strings)
-        source_chunks = self.retriever.search(query, top_k=3)
+        source_chunks = self.retriever.search(query, top_k=top_k)
 
         # Create token generator from the generator component
         token_generator = self.generator.stream_response(query, source_chunks)

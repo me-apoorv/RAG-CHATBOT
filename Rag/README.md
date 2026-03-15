@@ -122,6 +122,4 @@ RAG/
     └── (other helpers)
 ```
 
----
-
-If you'd like, I can add a small helper to download the GGUF model automatically, or create a `conda` environment YAML to simplify installing `faiss-cpu` and `llama-cpp-python` on macOS. Which would you prefer? 
+--- 
